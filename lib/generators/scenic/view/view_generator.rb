@@ -20,7 +20,7 @@ module Scenic
       def class_file_name
         return plural_file_name if Scenic.configuration.pluralize_view_names
 
-        file_name
+        file_name.camelize
       end
 
       def create_views_directory
@@ -118,9 +118,9 @@ module Scenic
 
       def formatted_plural_name
         if plural_name.include?(".")
-          "\"#{plural_name}\""
+          "\"#{base_name}\""
         else
-          ":#{plural_name}"
+          ":#{base_name}"
         end
       end
 
