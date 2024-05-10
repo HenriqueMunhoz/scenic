@@ -105,11 +105,11 @@ module Scenic
       end
 
       def definition
-        Scenic::Definition.new(class_file_name, version)
+        Scenic::Definition.new(singular_name, version)
       end
 
       def previous_definition
-        Scenic::Definition.new(class_file_name, previous_version)
+        Scenic::Definition.new(singular_name, previous_version)
       end
 
       def destroying?
