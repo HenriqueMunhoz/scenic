@@ -93,7 +93,7 @@ module Scenic
       end
 
       def file_path_name
-        return super if Scenic.configuration.pluralize_view_names
+        return plural_file_name if Scenic.configuration.pluralize_view_names
 
         singular_name
       end
