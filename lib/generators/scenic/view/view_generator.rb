@@ -92,12 +92,18 @@ module Scenic
         super.tr(".", "_")
       end
 
+      def file_path_name
+        return super if Scenic.configuration.pluralize_view_names
+
+        singular_name
+      end
+
       def views_directory_path
         @views_directory_path ||= Rails.root.join("db", "views")
       end
 
       def version_regex
-        /\A#{singular_name}_v(?<version>\d+)\.sql\z/
+        /\A#{file_path_name}_v(?<version>\d+)\.sql\z/
       end
 
       def creating_new_view?
@@ -105,11 +111,11 @@ module Scenic
       end
 
       def definition
-        Scenic::Definition.new(singular_name, version)
+        Scenic::Definition.new(file_path_name, version)
       end
 
       def previous_definition
-        Scenic::Definition.new(singular_name, previous_version)
+        Scenic::Definition.new(file_path_name, previous_version)
       end
 
       def destroying?
