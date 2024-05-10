@@ -97,7 +97,7 @@ module Scenic
       end
 
       def version_regex
-        /\A#{class_file_name}_v(?<version>\d+)\.sql\z/
+        /\A#{singular_name}_v(?<version>\d+)\.sql\z/
       end
 
       def creating_new_view?
